@@ -28,7 +28,7 @@ The Silhouette Score shows the proximity and density of clusters and has values 
 **Mapping:**
 
 
-Our job is to optimize and map the best evacuation route from Central Park to Prospect Park. Tom Tom API does this for us already, it is a multilingual, globally supported, reliable and free source for live traffic and routing data. Being that our client will need our project to be implemented on a global scale at some point, Tom Tom is ideal choice. We prove this by comparing its live routing mechanism overlaid on historical New York traffic clusters to validated its  efficiency by always routing around these clusters.
+Our job is to optimize and map the best evacuation route from Central Park to Prospect Park. Tom Tom API does this for us already, it is a multilingual, globally supported, reliable and free source for live traffic and routing data. Being that our client will need our project to be implemented on a global scale at some point, Tom Tom is ideal choice. We prove this by comparing its live routing mechanism overlaid on historical New York traffic clusters to validate its efficiency by always routing around these clusters.
 
 
 ---
