@@ -14,9 +14,6 @@
 
 Our data comes from two sources: the TomTom API and NYC Open Data. After obtaining a TomTom key, the service's API gave us detailed data on traffic incidents across NYC. This included the coordinates and location of each incident, as well as the type of incident and weather conditions. The API allowed us to collect this data in real-time, but could not give us sufficient data for modeling. Using the API to collect sufficient historical data would be too time-consuming. NYC Open Data offers a free dataset on traffic accidents that similarly details incidents by coordinates and location. This gave us access to thousands of rows of historical data, free to download in CSV format. We decided to train our model on the NYC Open Data dataset and make predictions using the TomTom data, using the coordinate and location features that they share. This way, we could generate an output based on both live and historical data.
 
-## Executive Summary
-
-
 **EDA & Outside Research:**
 
 Our analysis shows that data collected from the TomTom API offers a fuller sense of traffic and road incidents. Although the NYC Open Data dataset is comprehensive, we see that the TomTom data can better say which types of incidents are more common and offers different insights into when incidents happen. The TomTom data is clearly valuable for predicting evacuation routes, because it demonstrates that measuring collisions alone is not enough to understand many possible events that can cause traffic. This data confirms certain observations on when incidents are most likely to happen, but also raises new questions about why certain events may happen when they do, as seen in the heatmaps in the EDA notebook.
