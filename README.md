@@ -17,19 +17,25 @@ We decided to focus our map on routes between Central Park and Prospect Park. We
 Our data comes from two sources: the TomTom API and NYC Open Data. After obtaining a TomTom key, the service's API gave us detailed data on traffic incidents across NYC. This included the coordinates and location of each incident, as well as the type of incident and weather conditions. The API allowed us to collect this data in real-time, but could not give us sufficient data for modeling. Using the API to collect sufficient historical data would be too time-consuming. NYC Open Data offers a free dataset on traffic accidents that similarly details incidents by coordinates and location. This gave us access to thousands of rows of historical data, free to download in CSV format. We decided to train our model on the NYC Open Data dataset and make predictions using the TomTom data, using the coordinate and location features that they share. This way, we could generate an output based on both live and historical data.
 
 ### Exploratory Data Analysis & Outside Research
+## Executive Summary
+
+
+**EDA & Outside Research:**
 
 Our analysis shows that data collected from the TomTom API offers a fuller sense of traffic and road incidents. Although the NYC Open Data dataset is comprehensive, we see that the TomTom data can better say which types of incidents are more common and offers different insights into when incidents happen. The TomTom data is clearly valuable for predicting evacuation routes, because it demonstrates that measuring collisions alone is not enough to understand many possible events that can cause traffic. This data confirms certain observations on when incidents are most likely to happen, but also raises new questions about why certain events may happen when they do, as seen in the heatmaps in the EDA notebook.
 
-### Preprocessing and Modeling
 
- We decided to use an Unsupervised Model since we did not have a target variable. We used the DBSCAN Clustering Algorithm to cluster high density traffic areas in the city. DBSCAN is an UNSUPERVISED clustering Algorithm, so there is no true way to evaluate it. The mechanism for clustering is that the neighborhood of a given radius has to contain  a minimum number of points.  Therefore the parameters of the model are the radius  and the number of points included in the cluster. For our modeling we utilized the coordinates of traffic incidents. We tried different values for the eps and minimum number of observations to get the best value counts for the clusters and minimizing the outliers. We also tried to get the best value for the Silhouette Score Being that there is no way to really evaluate the model, we still used pseudo metrics for our evaluation purposes.
-The Silhouette Score shows the proximity and density of clusters and has values from -1 to 1. We chose the Silhouette Score for our model because it showed us the relationship between our clusters. 
+**Modeling:**
+
+We pulled data multiple times a day from the Tom Tom API to be able to get live data about road and traffic conditions in the city. After cleaning and doing basic EDA, in order to validate the efficiency of routing given by Tom Tom we decided to use an Unsupervised Model since we did not have a target variable. We used the DBSCAN Clustering Algorithm to cluster high density traffic areas in the city. Due to the fact that it is an UNSUPERVISED clustering algorithm there is no true way to evaluate it. The mechanism for clustering is that the neighborhood of a given radius has to contain  a minimum number of points.  Therefore the parameters of the model are the radius  and the number of points included in the cluster. For our modeling we utilized the coordinates of traffic incidents. We tried different values for the eps and minimum number of observations to get the best value counts for the clusters and minimizing the outliers. We also tried to get the best value for the Silhouette Score 
+Being that there is no way to really evaluate the model, we still used pseudo metrics for our evaluation purposes.
+The Silhouette Score shows the proximity and density of clusters and has values from -1 to 1. We chose this one because it is a better measurement for the relationship between our clusters.
+
+**Mapping:**
 
 
+Our job is to optimize and map the best evacuation route from Central Park to Prospect Park. Tom Tom API does this for us already, it is a multilingual, globally supported, reliable and free source for live traffic and routing data. Being that our client will need our project to be implemented on a global scale at some point, Tom Tom is ideal choice. We prove this by comparing its live routing mechanism overlaid on historical New York traffic clusters to validated its  efficiency by always routing around these clusters.
 
-### Mapping
-
-Tom Tom API is a multilingual, globally supported, reliable and free source for live traffic and routing data. Being that our client will need our project to be implemented on a global scale at some point. Tom Tom is ideal. We proved this by comparing it's live routing mechanism overlayed on historical New York trafffic clusters to validated it's effiencey by always routing arouud these clusters. We preformed this trail several times with 100% success rate. Tom Tom's accuracy was succesfully validated by comparing street closures to NYC's traffic website on multiple runs as well.
 
 ---
 
@@ -72,10 +78,14 @@ Tom Tom API is a multilingual, globally supported, reliable and free source for 
 
 ---
 
-# Conclusion & Recommendations
+## Conclusion
 
-The DBSCAN clustering algorithm does a decent job of clustering the traffic incident areas. Since it is an unsupervised model and it is being utilized for visual purposes only, a silhouette score of 0.40 will suffice. 
-Tom Tom API is a multilingual, globally supported, reliable and free source for live traffic and routing data. Being that our client will need our project to be implemented on a global scale at some point. Tom Tom is ideal. We proved this by comparing it's live routing mechanism overlayed on historical New York trafffic clusters to validated it's effiencey by always routing arouud these clusters. We preformed this trail several times with 100% success rate. Tom Tom's accuracy was succesfully validated by comparing street closures to NYC's traffic website on multiple runs as well.
+We succesfully completed what we set out to accomplish in our problem statement and mapped the best evacuation route from Central Park to Prospect Park utilzing live traffic data. Tom Tom API is a multilingual, globally supported, reliable and free source for live traffic and routing data. Being that our client will need our project to be implemented on a global scale at some point this makes Tom Tom an ideal choice. We validated Tom Tom's efficiency by ensuring its live routing mechanism overlaid on a map of clustered historical New York traffic data will always route around them. This is because Tom Tom is already trained on historical traffic data. We obtained our clusters by using the DBSCAN clustering algorithm and clustering the historically traffic dense areas. Since it is an unsupervised model and it is being utilized for visual purposes only, a silhouette score of 0.40 will suffice. We performed the route validation trials several times with a 100% success rate. Tom Tom's accuracy was successfully validated by comparing street closures to NYC's traffic website on multiple runs as well. We are satisfised with the final maps because we were able to map everything we set out to do.
+
+## Recommendations & Next Steps
+
+For mapping we would use Geocoding that would allow us to use physical addresses instead of coordinates. Then over lay traffic flow polyline indicators on the live map for better interpretability. We would also do additional research on causes of traffic-dense hours and explore the outliers a bit more. Since eventually we hope it will be utilzed globally it would be interesting to try this exact project out in another language and apply it to other regions of the world.
+
 ## References
 
 [NYC Street Closures](http://maps.nyc.gov/streetclosure/)
