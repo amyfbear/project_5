@@ -16,7 +16,6 @@ We decided to focus our map on routes between Central Park and Prospect Park. We
 
 Our data comes from two sources: the TomTom API and NYC Open Data. After obtaining a TomTom key, the service's API gave us detailed data on traffic incidents across NYC. This included the coordinates and location of each incident, as well as the type of incident and weather conditions. The API allowed us to collect this data in real-time, but could not give us sufficient data for modeling. Using the API to collect sufficient historical data would be too time-consuming. NYC Open Data offers a free dataset on traffic accidents that similarly details incidents by coordinates and location. This gave us access to thousands of rows of historical data, free to download in CSV format. We decided to train our model on the NYC Open Data dataset and make predictions using the TomTom data, using the coordinate and location features that they share. This way, we could generate an output based on both live and historical data.
 
-### Exploratory Data Analysis & Outside Research
 ## Executive Summary
 
 
